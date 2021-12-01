@@ -1,36 +1,22 @@
-# adv.zozi
+### Advent of Code 2021 in Clojure
 
-FIXME: description
+Beginner clojurian here, I'm trying to improve my skills. 
 
-## Installation
-
-Download from http://example.com/FIXME.
 
 ## Usage
 
-FIXME: explanation
+Each day is located in one file/namespace. Function **get-answers [filename]** is used for running both tasks. Slightly digested input (i. e. cut into lines or sequence of numbers) is used by **day-x-p-y** functions (where x is day number and y is part (1 or 2)).  
 
-    $ java -jar adv.zozi-0.1.0-standalone.jar [args]
+## Tests and input
+Tests are included. Input data are not.
 
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+## Results
+1. **
+2. not released
 
 ## License
 
-Copyright © 2021 FIXME
+Copyright © 2021 Pikolinianita
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License 2.0 which is available at
