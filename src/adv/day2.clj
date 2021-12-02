@@ -1,0 +1,1 @@
+(ns adv.day2)
