@@ -13,8 +13,38 @@
 
 (def tiny-board ["1 2"
                  "3 4"])
+				 
+(def tiny-board2 ["101 2"
+                 "3 4"])		
+
+(def tiny-board3 ["101 102"
+                 "3 4"])	
+
+(def tiny-board4 ["101 2"
+                 "103 4"])					 
 
 (deftest input
   (testing "input processing"
-  (is (= [[1 2] [3 4]] (sut/make-board tiny-board)))))
-(println (sut/make-board board1))
+  ;(is (= [[1 2] [3 4]] (sut/make-board tiny-board)))
+  (is (= [1 2 3 4] (sut/make-board tiny-board)))
+  ))
+;(println (sut/make-board board1))
+
+(deftest check-win
+	(testing "should not win"
+		(is (= false (sut/solved? (sut/make-board tiny-board))))
+		(is (= false (sut/solved? (sut/make-board tiny-board2))))
+	)
+	(testing "should win"
+		(is (= true (sut/solved? (sut/make-board tiny-board3))))
+		(is (= true (sut/solved? (sut/make-board tiny-board4))))
+	)	
+)
+
+(deftest check-hit
+	(testing "hit proc"
+		(is (= [1 2 103 4] (sut/hit [1 2 3 4] 3)))
+))
+
+(println (update-in test-numbers [(.indexOf test-numbers 17 )] #(+ 100 %)))
+;(println (sut/solve (sut/make-board board1)))
