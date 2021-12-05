@@ -1,10 +1,9 @@
 (ns adv.day4
   (:require [clojure.string :as str]))
 
-(def bingo-size 5)
-
 (defn print-square [board]
-  (doall (map println (partition 5 board)))
+  (doall
+   (map println (partition 5 board)))
   (println))
 
 (defn make-board [lines]
@@ -22,39 +21,37 @@
   (let [size (int (Math/sqrt (count board)))
         test-row (fn [pos] (->> board (drop (* pos size)) (take size)))
         test-col (fn [pos] (->> board (drop pos) (take-nth size)))
-        hit? (fn [line] (every? #(< 100 %) line))]
-
+        hit? (fn [line] (every? #(< 99 %) line))]
     (true? (or
             (some true? (map hit? (map test-row (range size))))
             (some true? (map hit? (map test-col (range size))))))))
 
-(defn final-score-p1 [board n]
-
- ; (println board n)
-  (* n (apply + (filter #(> 100 %) board)))
-  )
+(defn final-score [board n]
+  (* n (apply + (filter #(> 100 %) board))))
 
 (defn try-solve-p1 [shots boards]
   (let [hit-boards (vec (map #(hit % (first shots)) boards))
         solved-vec (map solved? hit-boards)]
-	;(println (first shots) (map solved? hit-boards))
-	;(doall (map print-square hit-boards))
-	;(println (class hit-boards))
     (if (every? false? solved-vec)
       (recur (rest shots) hit-boards)
-      (final-score-p1 (get hit-boards (.indexOf solved-vec true)) (first shots))
-		;(str "finished " (first shots))
-      )))
+      (final-score (get hit-boards (.indexOf solved-vec true)) (first shots)))))
 
+(defn try-solve-p2 [shots boards]
+  (let [hit-boards (vec (map #(hit % (first shots)) boards))
+        solved-vec (map solved? hit-boards)]
+    (if (every? true? solved-vec)     
+      (final-score (get hit-boards (.indexOf (map solved? boards) false)) (first shots)) 
+      (recur (rest shots) hit-boards))))
 
 (defn day-4-p-1 [s]
   (let [shots (map #(Integer/parseInt %) (str/split (first s) #","))
         board-str (map make-board (filter #(< 1 (count %)) (partition-by #(= "" %) (rest s))))]
-
     (try-solve-p1 shots board-str)))
 
 (defn day-4-p-2 [s]
-  "not implemented")
+ (let [shots (map #(Integer/parseInt %) (str/split (first s) #","))
+        board-str (map make-board (filter #(< 1 (count %)) (partition-by #(= "" %) (rest s))))]
+    (try-solve-p2 shots board-str)))
 
 (defn get-answer [path-to-file]
   (let [s (str/split-lines (slurp path-to-file))]

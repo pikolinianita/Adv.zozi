@@ -1,7 +1,6 @@
 (ns adv.day4-test
   (:require [clojure.test :refer [deftest is testing]]
-            [adv.day4 :as sut]
-            [clojure.string :as str]))
+            [adv.day4 :as sut]))
 
 (def test-numbers [7 4 9 5 11 17 23 2 0 14 21 24 10 16 13 6 15 25 12 22 18 20 8 19 3 26 1])
 
@@ -37,9 +36,7 @@
 
 (deftest input
   (testing "input processing"
-  ;(is (= [[1 2] [3 4]] (sut/make-board tiny-board)))
     (is (= [1 2 3 4] (sut/make-board tiny-board)))))
-;(println (sut/make-board board1))
 
 (deftest check-win
   (testing "should not win"
@@ -53,14 +50,12 @@
   (testing "hit proc"
     (is (= [1 2 103 4] (sut/hit [1 2 3 4] 3)))
     (is (= [101 2 3 4] (sut/hit [1 2 3 4] 1)))))
-board1 board2
+
 (deftest part-1
-  (testing "parse input"
-		;(is (= [1 2 103 4] (reduce + (map count (sut/day-4-p-1  (str/split-lines (slurp "inp/04.txt")))))))
+  (testing "parse first part"		
     (is (= 4512 (sut/try-solve-p1 test-numbers (map sut/make-board [board2 board3 board1]))))))
 
-;(println (sut/day-4-p-1 (str/split-lines (slurp "inp/04.txt"))))
+(deftest part-2
+  (testing "parse sec part"		
+    (is (= 1924 (sut/try-solve-p2 test-numbers (map sut/make-board [board2 board3 board1]))))))
 
-;(println (update-in test-numbers [(.indexOf test-numbers 17)] #(+ 100 %)))
-;(println (sut/solve (sut/make-board board1)))
-;(println "answer is" (time (sut/get-answer "inp/04.txt")))
