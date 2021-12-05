@@ -8,13 +8,15 @@ Beginner clojurian here, I'm trying to improve my skills.
 Each day is located in one file/namespace. Function **get-answers [filename]** is used for running both tasks. Slightly digested input (i. e. cut into lines or sequence of numbers) is used by **day-x-p-y** functions (where x is day number and y is part (1 or 2)).  
 
 ## Tests and input
-Tests are included. Input data are not.
+Tests are included. Input data is not.
 
 ## Results
 1. **
 2. **
 3. **
-4. ...
+4. **
+5. **
+6. ??
 
 ## License
 
