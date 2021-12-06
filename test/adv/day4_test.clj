@@ -52,10 +52,10 @@
     (is (= [101 2 3 4] (sut/hit [1 2 3 4] 1)))))
 
 (deftest part-1
-  (testing "parse first part"		
+  (testing "first part"		
     (is (= 4512 (sut/try-solve-p1 test-numbers (map sut/make-board [board2 board3 board1]))))))
 
 (deftest part-2
-  (testing "parse sec part"		
+  (testing "sec part"		
     (is (= 1924 (sut/try-solve-p2 test-numbers (map sut/make-board [board2 board3 board1]))))))
 

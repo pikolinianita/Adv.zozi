@@ -1,30 +1,32 @@
 (ns adv.day5
    (:require [clojure.string :as str]))
 
-(defn sorted-range [x y]
-  (if (< x y)
-    (range x (inc y))
-    (range y (inc x))))
-
-(defn sorted-range-p2 [x y]
+(defn sorted-range-p2
+ "returns range from x to y,  [1 3] -> [1 2 3]; [3 1] -> [3 2 1]"
+  [x y]
   (if (< x y)
     (range x (inc y))
     (reverse (range y (inc x)))))
 
-(def line? (fn [vectr] (or (= (vectr 1) (vectr 3)) (= (vectr 2) (vectr 0)))))
+(def line? 
+  "is vector [x1 y1 x2 y2] vertical or horizontal?"
+  (fn [[x1 y1 x2 y2]] (or (= x1 x2) (= y1 y2))))
 
 (defn vectorize
    "from '0,9 -> 5,9' to [0 9 5 9]"
   [v]
   (vec (map #(Integer/parseInt %) (re-seq #"\d+" v))))  
 
-(defn make-vectrs-v&h [[x1 y1 x2 y2]]
-  (for [x (sorted-range x1 x2)
-        y (sorted-range y1 y2)]
-    [x y]
-    ))
+(defn make-vectrs-v&h 
+  "returns points from x1 y1 to x2 y2 - verical and horizontal version"
+  [[x1 y1 x2 y2]]
+  (for [x (sorted-range-p2 x1 x2)
+        y (sorted-range-p2 y1 y2)]
+    [x y]))
 
-(defn make-vectr-dia [[x1 y1 x2 y2]]
+(defn make-vectr-dia
+ "returns points from x1 y1 to x2 y2 - diagonal version"
+  [[x1 y1 x2 y2]]
   (map vec (partition 2 (interleave (sorted-range-p2 x1 x2) (sorted-range-p2 y1 y2)))))
 
 (defn day-5-p-1 [s]  
