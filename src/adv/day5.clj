@@ -39,8 +39,7 @@
         v&h-maps (map #(zipmap % (repeat 1)) (map make-vectrs-v&h v&h-vec))
         dia-maps (map #(zipmap % (repeat 1)) (map make-vectr-dia dia-vec))
         merged-maps  (merge-with + (apply merge-with + v&h-maps) (apply merge-with + dia-maps)) ]
-   (count (filter #(< 1 %) (vals merged-maps)))   
-    ))
+   (count (filter #(< 1 %) (vals merged-maps)))))
 
 (defn get-answer [path-to-file]
   (let [s (map vectorize (str/split-lines (slurp path-to-file)))]

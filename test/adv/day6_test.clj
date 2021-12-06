@@ -10,12 +10,10 @@
     (is (= 10 (sut/simulate start-seq 7)))
     (is (= 20 (sut/simulate start-seq 14)))
     (is (= 5 (sut/simulate start-seq 1)))
-    (is (= 10 (sut/simulate start-seq 5)))
-    ))
+    (is (= 10 (sut/simulate start-seq 5)))))
 
 (deftest p1
   (testing "parts"
     (is (= 5934 (sut/day-6-p-1 start-seq)))
-    (is (= 26984457539 (sut/day-6-p-2 start-seq)))
-    ))
+    (is (= 26984457539 (sut/day-6-p-2 start-seq)))))
 
