@@ -25,8 +25,7 @@
     ))
 
 (defn make-vectr-dia [[x1 y1 x2 y2]]
-  (map vec (partition 2 (interleave (sorted-range-p2 x1 x2) (sorted-range-p2 y1 y2))))
-  )
+  (map vec (partition 2 (interleave (sorted-range-p2 x1 x2) (sorted-range-p2 y1 y2)))))
 
 (defn day-5-p-1 [s]  
   (let [v&h-lines (map make-vectrs-v&h (filter line? s))
