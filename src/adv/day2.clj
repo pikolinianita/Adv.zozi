@@ -4,8 +4,8 @@
 (defn adjust-position
   "use position and depth. command is [:com value] 
    :forward first +
-    :down second +
-    :up second -
+   :down second +
+   :up second -
    "
   [[old-x old-depth] [command value]]
   (cond
@@ -13,8 +13,8 @@
     (= :up command) [old-x (- old-depth value)]
     (= :down command) [old-x (+ old-depth value)]))
 
-(defn adjust-aim-pos
-  ""
+(defn adjust-aim&pos
+  ":up :down change aim, :forward moves forward and down"
   [[old-aim old-x old-depth] [command value]]
    (cond
      (= :forward command) [old-aim (+ old-x value) (+ old-depth (* old-aim value))]
@@ -23,10 +23,10 @@
 
 (defn day-2-p-1 [comms]
   (let [[pos depth] (reduce adjust-position [0 0] comms)]
-    (* pos depth)))
+    (* pos depth))) 
 
 (defn day-2-p-2 [comms]
-  (let [[_ pos depth] (reduce adjust-aim-pos [0 0 0] comms)]
+  (let [[_ pos depth] (reduce adjust-aim&pos [0 0 0] comms)]
     (* pos depth)))
 
 (defn tokenify
