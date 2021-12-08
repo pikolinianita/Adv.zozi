@@ -23,7 +23,7 @@
   (reduce + (map #(sum_n (Math/abs (- % n))) vec))) 
 
 (defn find-minimum
-  "finds local minimum f (inp n), where initial n = guess and n is inc/dec by one"
+  "finds local minimum f (inp, n), where initial n = guess and n is inc/dec by one per iteration"
   [f inp guess]
   (let [result (f inp guess)]
     (cond
