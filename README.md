@@ -22,6 +22,9 @@ Tests are included. Input data is not.
 9. ..
 10. **
 11. ..
+12. ..
+13. ..
+14. **
 
 ## License
 
