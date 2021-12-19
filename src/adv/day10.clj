@@ -1,6 +1,5 @@
 (ns adv.day10
-  (:require [clojure.string :as str]
-            [clojure.set :refer [map-invert]]))
+  (:require [clojure.string :as str]))
 
 (def points {\) 3 \] 57  \} 1197 \> 25137 nil 0})
 
@@ -12,28 +11,26 @@
   (let [charz (seq line)]
 (loop [sq charz
        q []]
-  ;(println q " : " (peek q) " : " (first sq) " : " (open (first sq)) " : " (close (first sq)))
   (cond
     (open (first sq)) (recur (rest sq) (conj q (open (first sq))))
     (= (first sq) (peek q)) (recur (rest sq) (pop q))
     :else (points (first sq))))))
 
+
 (defn score-p2 [count char]
-(+ (* 5 count) (points-p2 char))  
-)
+(+ (* 5 count) (points-p2 char)))
+
 
 (defn missing-chars [line]
   (let [charz (seq line)]
     (loop [sq charz
            q []]
-  ;(println q " : " (peek q) " : " (first sq) " : " (open (first sq)) " : " (close (first sq)))
       (cond
         (open (first sq)) (recur (rest sq) (conj q (open (first sq))))
         (= (first sq) (peek q)) (recur (rest sq) (pop q))
         (not-empty sq) 0
         :else (reduce score-p2 0 (reverse q))
         ))))
-
 
 
 (defn day-10-p-1 [s] 
