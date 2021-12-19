@@ -1,4 +1,4 @@
-(ns adv.day4-test
+(ns adv.day04-test
   (:require [clojure.test :refer [deftest is testing]]
             [adv.day4 :as sut]))
 
