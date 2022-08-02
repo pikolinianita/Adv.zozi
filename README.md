@@ -11,6 +11,8 @@ Each day is located in one file/namespace. Function **get-answers [filename]** i
 Tests are included. Input data is not.
 
 ## Results
+27 stars:
+
 1. **
 2. **
 3. **
