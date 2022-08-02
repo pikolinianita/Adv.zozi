@@ -27,7 +27,7 @@ Tests are included. Input data is not.
 14. **
 15. ..
 16. ..
-17. *.
+17. **
 18. ..
 19. ..
 20. ..
